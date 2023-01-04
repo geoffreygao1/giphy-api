@@ -16,6 +16,7 @@
       "warn",
       2
     ],
-    "no-debugger": "warn" // new line
+    "no-debugger": "warn",
+    "no-unused-vars": "warn"
   }
 }
