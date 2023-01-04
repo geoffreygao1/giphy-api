@@ -1,4 +1,3 @@
-
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
@@ -7,7 +6,7 @@ import './css/styles.css';
 
 function getGifs(keyword) {
   let request = new XMLHttpRequest();
-  const url = `http://api.giphy.com/v1/gifs/search?q=${keyword}&limit=3&apikey=${process.env.API_KEY}`
+  const url = `http://api.giphy.com/v1/gifs/search?q=${keyword}&limit=3&apikey=${process.env.API_KEY}`;
 
   request.addEventListener("loadend", function () {
     const response = JSON.parse(this.responseText);
@@ -25,21 +24,35 @@ function getGifs(keyword) {
 // UI Logic
 
 function printError(request, apiResponse, keyword) {
-  document.querySelector('#showResponse').innerText = `There was an error accessing the weather data for ${city}: ${request.status} ${request.statusText}: ${apiResponse.message}`;
 }
 
 function printElements(apiResponse, keyword) {
-  document.querySelector('#showResponse').innerText = `The humidity in ${city} is ${apiResponse.main.humidity}%.
-  The temperature in Kelvins is ${apiResponse.main.temp} degrees.`;
+  let header = document.getElementById(`searchResults`);
+  header.innerText = `${keyword} Gifs`;
+  for (let i = 0; i < apiResponse['data'].length; i++) {
+    let div = document.getElementById(`gif${i}`);
+    div.innerHTML = "";
+    let img = document.createElement("img");
+    img.src = apiResponse['data'][i]["images"]["fixed_height_downsampled"]["url"];
+    div.append(img);
+  }
 }
 
-function handleFormSubmission(event) {
+function handleKeywordSubmission(event) {
   event.preventDefault();
   const keyword = document.querySelector('#keyword').value;
   document.querySelector('#keyword').value = null;
   getGifs(keyword);
 }
+function handleTrendingSubmission(event) {
+  document.querySelector('#keyword').value = null;
+}
+function handleRandomSubmission(event) {
+  document.querySelector('#keyword').value = null;
+}
 
 window.addEventListener("load", function () {
-  document.querySelector('form').addEventListener("submit", handleFormSubmission);
+  document.querySelector('form').addEventListener("submit", handleKeywordSubmission);
+  document.getElementById('trending').addEventListener("click", handleTrendingSubmission);
+  document.getElementById('random').addEventListener("click", handleRandomSubmission);
 });

@@ -8,15 +8,20 @@
 <body>
   <div class="container">
     <h1>GIF Search</h1>
-    <form>
-      <label for="keyword">Enter a key word:</label>
-      <input id="keyword" type="text" name="keyword">
-      <button type="submit" class="btn-success" id="searchTerm">Get Gifs</button>
-    </form>
+    <div id="keywordSearch">
+      <form>
+        <label for="keyword">Enter a key word:</label>
+        <input id="keyword" type="text" name="keyword">
+        <button type="submit" class="btn-success" id="searchTerm">Search</button>
+        <button type="button" class="btn-primary" id="trending">Get Trending</button>
+        <button type="button" class="btn-warning" id="random">I'm Feeling Lucky</button>
+      </form>
+    </div>
+    <h2 id="searchResults"></h2>
     <div class="row">
-      <div class="col-4" id="gif1">Test 1</div>
-      <div class="col-4" id="gif2">Test 2</div>
-      <div class="col-4" id="gif3">Test 3</div>
+      <div class="col-4" id="gif0"></div>
+      <div class="col-4" id="gif1"></div>
+      <div class="col-4" id="gif2"></div>
     </div>
   </div>
   </div>
