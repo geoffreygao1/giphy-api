@@ -11,19 +11,17 @@
     <div id="keywordSearch">
       <form>
         <label for="keyword">Enter a key word:</label>
-        <input id="keyword" type="text" name="keyword">
-        <button type="submit" class="btn-success" id="searchTerm">Search</button>
-        <button type="button" class="btn-primary" id="trending">Get Trending</button>
-        <button type="button" class="btn-warning" id="random">I'm Feeling Lucky</button>
+        <input id="keyword" type="text" name="keyword" required>
+        <button type="submit" class="btn btn-success" id="searchTerm">Search</button>
+        <button type="button" class="btn btn-primary" id="trending">Get Trending</button>
+        <br>
+        <label for="numGifs">Show me:</label>
+        <input id="numGifs" type="number" name="numGifs" required min="1" max="50" default="3">
       </form>
     </div>
+    <div id="showResponse"></div>
     <h2 id="searchResults"></h2>
-    <div class="row">
-      <div class="col-4" id="gif0"></div>
-      <div class="col-4" id="gif1"></div>
-      <div class="col-4" id="gif2"></div>
-    </div>
-  </div>
+    <div id="gifResults"></div>
   </div>
 </body>
 
